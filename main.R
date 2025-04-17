@@ -1,0 +1,10 @@
+library(tidyverse)
+library(here)
+
+tv_hours_tabulation <- gss_cat %>% 
+  group_by(marital) %>% 
+  summarise(mean_tv_hours = mean(tvhours, na.rm = T))
+
+# Noticed that divorced people seem to watch more TV
+
+write_csv(tv_hours_tabulation, here("TV_hours_by_Marital.csv"))
